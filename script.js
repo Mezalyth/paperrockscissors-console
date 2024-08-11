@@ -23,7 +23,7 @@ function getUserChoice() {
 //Compare choices and determine winner
 function playRound(userChoice, computerChoice) {
     if (userChoice === computerChoice) {
-        alert("Draw! Play again, you got this!");
+        alert("Draw! You: " + humanScore + ". Computer: " + computerScore);
         return;
     }
 
@@ -32,13 +32,15 @@ function playRound(userChoice, computerChoice) {
         (userChoice === 'scissors' && computerChoice === 'paper') ||
         (userChoice === 'paper' && computerChoice === 'rock')
     ) {
-        alert("You win this round!");
         humanScore ++;
+        alert("You win this round!  You: " + humanScore + ". Computer: " + computerScore);    
     } else {
-        alert("Computer won this round.");
         computerScore ++;
+        alert("You lose this round. You: " + humanScore + ". Computer: " + computerScore);
     }
 }
+
+while (humanScore < 3 && computerScore <3) {
 const humanSelection = getUserChoice();
 const computerSelection = getComputerChoice();
 
@@ -48,3 +50,14 @@ console.log("Computer Choice: " + computerSelection);
 console.log("Human Choice: " + humanSelection);
 console.log("Computer Score: " + computerScore);
 console.log("Human Score: " + humanScore);
+}
+
+if (humanScore === 3) {
+    alert("You win! Refresh to play again.");
+} else if (computerScore === 3) {
+    alert("You lose. Refresh to play again.");
+}
+
+//Reset if 3 victories
+computerScore = 0;
+humanScore = 0;
